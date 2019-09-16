@@ -9,3 +9,7 @@ Commands
 - composer require server:run
 - composer require server:start
 - composer require template
+- composer require orm
+- php bin/console doctrine:database:create
+- php bin/console make:entity
+  > > 1:40
