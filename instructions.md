@@ -13,3 +13,6 @@ Commands
 - php bin/console doctrine:database:create
 - php bin/console make:entity
   > > 1:40
+- composer require form validator
+- php bin/console make:form
+-
