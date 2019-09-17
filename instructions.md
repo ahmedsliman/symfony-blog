@@ -23,3 +23,4 @@ Commands
 - php bin/console doctrine:schema:update --dump-sql
 - php bin/console doctrine:schema:update --force
 - php bin/console make:controller RegistrationController
+- php bin/console make:entity --regenerate
