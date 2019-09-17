@@ -15,4 +15,10 @@ Commands
   > > 1:40
 - composer require form validator
 - php bin/console make:form
--
+- composer require profiler
+- composer req security
+- php bin/console make:user
+- php bin/console make:auth
+- php bin/console debug:router
+- php bin/console doctrine:schema:update --dump-sql
+- php bin/console doctrine:schema:update --force
