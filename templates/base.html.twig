@@ -18,11 +18,16 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('custom', {name: 'Ahmed'}) }}">Great Ahmed</a>
                     </li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item float-right">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Lgout</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
 
-        <div class="contriner">
+        <div class="container-fluid">
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}{% endblock %}

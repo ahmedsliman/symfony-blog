@@ -22,3 +22,4 @@ Commands
 - php bin/console debug:router
 - php bin/console doctrine:schema:update --dump-sql
 - php bin/console doctrine:schema:update --force
+- php bin/console make:controller RegistrationController
