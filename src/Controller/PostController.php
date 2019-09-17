@@ -22,7 +22,7 @@ class PostController extends AbstractController
     {
         $posts = $postRepository->findAll();
 
-        dump($posts);
+        //dump($posts);
 
         return $this->render('post/index.html.twig', [
             'posts' => $posts,
@@ -45,6 +45,35 @@ class PostController extends AbstractController
         $em->flush();
 
         // response
-        return new Response('Post was created!');
+        //return new Response('Post was created!');
+        return $this->redirect($this->generateUrl('post.index'));
+    }
+
+    /**
+     * @Route("/show/{id}", name="show")
+     * @param Post $post
+     * @return Response
+     */
+    public function show(Post $post)
+    {
+        return $this->render('post/show.html.twig', [
+            'post' => $post
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function remove(Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('success', 'Post was just removed!');
+
+        // redirection
+        return $this->redirect($this->generateUrl('post.index'));
     }
 }

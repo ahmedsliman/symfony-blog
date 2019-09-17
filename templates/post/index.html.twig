@@ -8,10 +8,22 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+{% for message in app.flashes('success') %}
+    <div class="flash-notice alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+
 <div class="example-wrapper">
     <ul>
         {% for post in posts %}
-            <li>{{ post.id }}- {{ post.title }}</li>
+            <li>{{ post.id }} |
+                <a href="{{ path('post.show', {id: post.id}) }}">
+                    {{post.title}}
+                </a>
+
+                <a href="{{ path('post.delete', {id: post.id}) }}"> Delete </a>
+            </li>
         {% endfor %}
     </ul>
 </div>
