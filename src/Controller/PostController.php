@@ -36,7 +36,7 @@ class PostController extends AbstractController
      * @param Reuest $request
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request, FileUploader $fileUploader)
     {
         $post = new Post;
 
@@ -52,11 +52,7 @@ class PostController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $file = $request->files->get('post')['attachment'];
             if($file) {
-                $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
-                $file->move(
-                    $this->getParameter('uploads_dir'),
-                    $filename
-                );
+                $filename = $fileUploader->uploadFile($file);
 
                 $post->setImage($filename);
             }
