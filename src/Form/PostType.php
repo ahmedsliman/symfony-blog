@@ -10,6 +10,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+use App\Entity\Category;
+
 class PostType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -18,6 +22,9 @@ class PostType extends AbstractType
             ->add('title')
             ->add('attachment', FileType::class, [
                 'mapped' => false
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class
             ])
             ->add('save', SubmitType::class, [
                 'attr' => [
